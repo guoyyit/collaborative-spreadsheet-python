@@ -1,8 +1,8 @@
-from fastapi import FastAPI
+"""Entry point: ``uvicorn main:app`` (or ``python main.py``)."""
 
-app = FastAPI()
+from collab_sheet.server import app  # noqa: F401
 
+if __name__ == "__main__":
+    import uvicorn
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
